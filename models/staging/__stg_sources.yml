@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw_gz_data  # Dataset Name
+    description: "Source dataset in BigQuery"
+    database: lewagon-dataengineering-tc  # GCP Project ID
+    schema: raw_gz_data  # Dataset Name (same as `name` above)
+    tables:
+    - name: raw_gz_product
+      description: "Contains product information i.e. product_id, purchase_price"
+    - name: raw_gz_sales
+      description: "Contains customer details"
+    - name: raw_gz_ship
+      description: "List of departments"
