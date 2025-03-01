@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: stg_gz_product
+    description: Contains product information i.e. product_id, purchase_price
+    columns:
+
+      - name: product_id
+        description: Primary key for the product table
+        tests:
+          - unique
+          - not_null
+
+      - name: purchase_price
+        description: Price value of product
+        tests:
+          - not_null  
+
+  - name: stg_gz_sales
+    description: Contains product information i.e. product_id, purchase_price
+    columns:
+
+      - name: order_date
+        description: order date
+        tests:
+          - not_null
+
+      - name: order_id
+        description: Order identifier - foreign key to ship table
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_gz_ship')
+              field: order_id   
+
+      - name: product_id
+        description: Product identifier - foreign key to product table
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_gz_product')
+              field: product_id   
+
+      - name: price
+        description: Price paid by customer to purchase the products
+        tests:
+          - not_null   
+
+      - name: quantity
+        description: quantity of a product purchased in an order
+        tests:
+          - not_null    
+
+  - name: stg_gz_ship
+    description: Contains product information i.e. product_id, purchase_price
+    columns:
+
+      - name: order_id
+        description: Primary key for the ship table
+        tests:
+          - not_null
+          - unique
+
+      - name: shipping_fee
+        description: Fee customer pays for a shipping an order
+        tests:
+          - not_null 
+
+      - name: log_cost
+        description: Greenweez cost to preparing the parcel for delivery
+        tests:
+          - not_null   
+
+      - name: ship_cost
+        description: Greenweez shipping cost paid to logistics provider to deliver order
+        tests:
+          - not_null    
