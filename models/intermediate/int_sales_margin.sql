@@ -19,10 +19,11 @@ product as (
 ), 
 int_sales_margin as (
     select 
-        sales.*,
-        ROUND(quantity * purchase_price,2) as purchase_cost,
-        ROUND(revenue - (quantity * purchase_price),2) as margin,
-        product.purchase_price
+        sales.*
+        ,ROUND(quantity * purchase_price,2) as purchase_cost
+        ,ROUND(revenue - (quantity * purchase_price),2) as margin
+        ,{{ margin_percent('sales.revenue', 'sales.quantity') }} AS margin_percent
+        ,product.purchase_price
     from 
         sales
     join 
@@ -38,7 +39,8 @@ select
     quantity,
     purchase_price,
     purchase_cost,
-    margin
+    margin,
+    margin_percent
 from 
     int_sales_margin 
 order by 

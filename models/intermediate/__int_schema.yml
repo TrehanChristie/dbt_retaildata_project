@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: int_sales_margin
+    description: Product level information about the purchase cost and margin made on each product.
+    columns:
+      - name: product_id
+        description: Product identifier
+        data_tests:
+          - not_null
+      - name: order_id
+        description: Order identifier
+        data_tests:
+          - not_null
+      - name: order_date
+        description: order date
+      - name: revenue
+        description: Price paid by customer to purchase the products
+      - name: quantity
+        description: Quantity of a product purchased in an order
+      - name: purchase_price
+        description: Greenweez cost to obtain a single unit of the product.
+      - name: purchase_cost
+        description: Greenweez cost to obtain the products in an order. purchase_cost = quantity * purchase_price
+      - name: margin
+        description: Profit Greenweez makes on the sale of different products. margin = revenue - purchase_cost       
+
+  - name: int_orders_margin
+    description: margin calculationer order
+    columns:
+      - name: order_id
+        description: order identifier - primary key
+        data_tests:
+          - unique
+          - not_null
+      - name: order_date
+        description: order date
+      - name: revenue
+        description: price paid by customer to purchase all products in an order
+      - name: quantity
+        description: quantity of products in an order
+      - name: purchase_cost
+        description: Greenweez cost to obtain the products in an order.
+      - name: margin
+        description: profit Greenweez makes on the sale of products in an order
+
+  - name: int_orders_operational
+    description: operational margin calculation per order
+    columns:
+      - name: order_id
+        description: primary key
+        data_tests:
+          - unique
+          - not_null
+      - name: order_date
+        description: date of the order
+      - name: operational_margin
+        description: profit Greenweez makes on the sale of products in an order after operational and logistics costs
+      - name: quantity
+        description: quantity of products in an order
+      - name: revenue
+        description: price paid by customer to purchase all products in an order
+      - name: purchase_cost
+        description: Greenweez cost to obtain the products in an order
+      - name: margin
+        description: profit Greenweez makes on the sale of products in an order, not accounting for operational and logistics costs
+      - name: shipping_fee
+        description: the price the customer pays for shipping
+      - name: log_cost
+        description: Greenweez cost to prepare the parcel for delivery
+      - name: ship_cost
+        description: Greenweez shipping cost paid to logistics provider to deliver order

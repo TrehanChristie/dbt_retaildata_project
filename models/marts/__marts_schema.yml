@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: finance_days
+    description: Greenweez daily margin on sales with operational costs
+    columns:
+      - name: order_date
+        description: Order Date
+        data_tests:
+          - not_null
+          - unique
+      - name: nb_transactions
+        description: Daily number of orders
+      - name: quantity
+        description: Daily quantity of all products sold
+      - name: revenue
+        description: Daily price paid by all customers for all products sold
+      - name: average_basket
+        description: Daily average order revenue
+      - name: margin
+        description: Daily profit Greenweez makes on orders before operational and logistics costs
+      - name: operational_margin
+        description: Daily profit Greenweez makes on orders after operational and logistics costs
+      - name: purchase_cost
+        description: Daily Greenweez cost to obtain products sold
+      - name: shipping_fee
+        description: Daily total price paid by all customers for shipping
+      - name: log_cost
+        description: Daily Greenweez cost to prepare parcels for delivery
+      - name: ship_cost
+        description: Daily Greenweez cost paid to logistics providers to deliver orders
