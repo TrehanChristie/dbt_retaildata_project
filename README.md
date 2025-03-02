@@ -3,7 +3,7 @@
 
 # Case Study Context
 
-This modules challenges follow a case study for an ELT pipeline. The dataset that you will be using is from the French company Greenweez. Greenweez is an organic e-commerce website that caters to B2C customers by offering a variety of products for a healthier and more sustainable lifestyle.
+This challenge follow a case study for an ELT pipeline. The dataset that you will be using is from the French company Greenweez. Greenweez is an organic e-commerce website that caters to B2C customers by offering a variety of products for a healthier and more sustainable lifestyle.
 
 In these challenges you assume the role of a Data/Analytics Engineer working on a project with the finance team.
 
