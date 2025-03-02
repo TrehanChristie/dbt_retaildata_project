@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='view',
+        tags=['staging']
+    )
+}}
+
 with stg_gz_product as (
         select * from {{ source('raw_gz_data', 'raw_gz_product') }}
   )
