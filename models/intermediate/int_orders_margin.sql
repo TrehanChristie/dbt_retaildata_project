@@ -13,7 +13,7 @@ with int_sales_margin as (
 )
 select 
     order_id,
-    max(order_date) as max_order_date,
+    max(order_date) as order_date,
     ROUND(SUM(revenue),2) as revenue,
     ROUND(SUM(quantity),2) as quantity,
     ROUND(SUM(purchase_cost),2) as purchase_cost,

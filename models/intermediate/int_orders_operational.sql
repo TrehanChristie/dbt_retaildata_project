@@ -16,18 +16,23 @@ ship as (
         *
     from 
         {{ ref("stg_gz_ship") }}
-),int_orders_operational as (
+),
+int_orders_operational as (
     select 
-        ism.order_id,
-        ism.order_date,
-        round((ism.margin + s.shipping_fee) - (s.log_cost + s.ship_cost),2) as operational_margin,
-        ism.quantity,
-        ism.revenue,
-        ism.purchase_cost,
-        ism.margin,
-        s.shipping_fee,
-        s.log_cost,
-        s.ship_cost
+        ism.order_id,                      --order identifier
+        ism.order_date,                    --order date
+        round(
+            (ism.margin + s.shipping_fee) 
+            - 
+            (s.log_cost + s.ship_cost)
+            ,2) as operational_margin,     --profit Greenweez makes on the sale of products in an order after operational and logistics costs
+        ism.quantity,                      --quantity of products in an order
+        ism.revenue,                       --price paid by customer to purchase all products in an order     
+        ism.purchase_cost,                 --Greenweez cost to obtain the products in an order
+        ism.margin,                        --profit Greenweez makes on the sale of products in an order, not accounting for operational and logistics costs                  
+        s.shipping_fee,                    --fee customer pays for shipping an order
+        s.log_cost,                        --Greenweez cost to prepare the parcel for delivery 
+        s.ship_cost                        --Greenweez shipping cost paid to logistics provider to deliver order 
     from 
         int_sales_margin as ism
     join 
