@@ -7,8 +7,8 @@ sources:
     schema: raw_gz_data  # Dataset Name (same as `name` above)
     tables:
     - name: raw_gz_product
-      description: "Contains product information i.e. product_id, purchase_price"
+      description: Product on Greenweez. One row per product_id
     - name: raw_gz_sales
-      description: "Contains customer details"
+      description: Sales on Greenweez. One row per product_id found in each order_id
     - name: raw_gz_ship
-      description: "List of departments"
+      description: Shipping on Greenweez. One row per order_id

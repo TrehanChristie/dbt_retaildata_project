@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='view',
+        tags=['staging']
+    )
+}}
+
 with stg_gz_ship as (
         select * from {{ source('raw_gz_data', 'raw_gz_ship') }}
   )
