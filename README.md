@@ -298,20 +298,20 @@ dbt run
 
 If everything runs with no problems, have a look on BigQuery to check that the tables have been created! 
 
-## 7- Source Documentation
+# 7- Source Documentation
 
 Let's start by adding some documentation to our sources.
 
 ❓ Add a description about the schema (BigQuery dataset), **every table**, and **every column** in the `sources.yml` file.
 
-## 8- Source Tests
+# 8- Source Tests
 
 DBT comes with some built in tests for things like uniqueness of values in a column and making sure that there are no null values in a column.
 
 - Create a `__stg_schema.yml` file within the staging folder
 - Add some generic tests to `__stg_schema.yml`
 
-## 9- Create Intermediate Models
+# 9- Create Intermediate Models
 
 Our goal is to create an intermediate layer that builds on the previously created **staging models**.
 
@@ -353,7 +353,7 @@ Under the `models/intermediate/` directory, create a file called `int_orders_mar
 - Round float values to two decimal places.
 - Order by `orders_id` so that more recent orders appear first.
 
-## 1.3. Operational Margin per Order
+## 9.3. Operational Margin per Order
 
 The last intermediate model we will create is `int_orders_operational`. This model will capture information about the cost of shipping and logistics.
 
@@ -403,7 +403,7 @@ Under the `models/mart/finance/` directory, create a file called `finance_days.s
 - Round all float values to two decimal places.
 - Order by `date_date` so that the data appears in reverse chronological order.
 
-# 12- Create a margin_percent macro
+# 11- Create a margin_percent macro
 
 - In the `macros/` directory, create a `functions.sql` file.
 - Using [DBT's documentation at this link](https://docs.getdbt.com/docs/build/jinja-macros#macros) on Jinja macros, define the macro: `margin_percent` with the following parameters:
